@@ -122,6 +122,21 @@ See also the list of [contributors](https://github.com/ai4iacts/hexagdly/contrib
 This project is licensed under the MIT license - please consult the [LICENSE](LICENSE) file for details.
 
 
+## Citation
+
+If this work has helped your research, please cite us via:
+
+```
+@misc{hexagdly_code,
+    author       = {Tim Lukas Holch and Constantin Steppa},
+    title        = {HexagDLy - Hexagonal Convolutions with PyTorch},
+    month        = feb,
+    year         = 2018,
+    doi          = {10.5281/zenodo.1166131},
+    url          = {https://doi.org/10.5281/zenodo.1166131}
+}
+```
+
 ## Acknowledgments
 
 This project evolved by exploring new analysis techniques for Imaging Atmospheric Cherenkov Telescopes with the High Energy Stereoscopic System (H.E.S.S.). We would like to thank the members of the H.E.S.S. collaboration for their support.
