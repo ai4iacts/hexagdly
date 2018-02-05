@@ -9,6 +9,7 @@ HexagDLy provides convolution and pooling methods for hexagonally sampled input 
 - [How to use HexagDLy](#how-to-use-hexagdly)
 - [General Concept](#general-concept)
 - [Disclaimer](#disclaimer)
+- [Citing HexagDLy](#citation)
 
 
 ## Getting Started
