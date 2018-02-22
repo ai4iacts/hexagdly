@@ -88,7 +88,7 @@ class conv2d(nn.Module):
         if self.usebias:
             nn.init.constant(getattr(self, 'bias'), 0.01)
 
-    def shape_for_odd_colomuns(self, input_size, kernel_number):
+    def shape_for_odd_columns(self, input_size, kernel_number):
         slices = [None, None, None, None]
         pads = [0, 0, 0, 0]
         # left
@@ -107,7 +107,7 @@ class conv2d(nn.Module):
             
         return slices, pads
     
-    def shape_for_even_colomuns(self, input_size, kernel_number):
+    def shape_for_even_columns(self, input_size, kernel_number):
         slices = [None, None, None, None]
         pads = [0, 0, 0, 0]
         # left
@@ -141,10 +141,10 @@ class conv2d(nn.Module):
             dilation = (1, 1) if i == 0 else (1, 2 * i)
             
             if not self.input_size_is_known:
-                slices, pads = self.shape_for_odd_colomuns(input.size(), i)
+                slices, pads = self.shape_for_odd_columns(input.size(), i)
                 self.odd_columns_slices.append(slices)
                 self.odd_columns_pads.append(pads)
-                slices, pads = self.shape_for_even_colomuns(input.size(), i)
+                slices, pads = self.shape_for_even_columns(input.size(), i)
                 self.even_columns_slices.append(slices)
                 self.even_columns_pads.append(pads)
                 if i == self.size:
@@ -277,7 +277,7 @@ class maxpool2d(nn.Module):
         for i in range(self.size + 1):
             setattr(self, 'kernel' + str(i), (1 + 2 * self.size - i, 1 if i==0 else 2))
 
-    def shape_for_odd_colomuns(self, input_size, kernel_number):
+    def shape_for_odd_columns(self, input_size, kernel_number):
         slices = [None, None, None, None]
         pads = [0, 0, 0, 0]
         # left
@@ -296,7 +296,7 @@ class maxpool2d(nn.Module):
         
         return slices, pads
     
-    def shape_for_even_colomuns(self, input_size, kernel_number):
+    def shape_for_even_columns(self, input_size, kernel_number):
         slices = [None, None, None, None]
         pads = [0, 0, 0, 0]
         # left
@@ -328,10 +328,10 @@ class maxpool2d(nn.Module):
         for i in range(self.size + 1):
             dilation = (1, 1) if i == 0 else (1, 2 * i)
             if not self.input_size_is_known:
-                slices, pads = self.shape_for_odd_colomuns(input.size(), i)
+                slices, pads = self.shape_for_odd_columns(input.size(), i)
                 self.odd_columns_slices.append(slices)
                 self.odd_columns_pads.append(pads)
-                slices, pads = self.shape_for_even_colomuns(input.size(), i)
+                slices, pads = self.shape_for_even_columns(input.size(), i)
                 self.even_columns_slices.append(slices)
                 self.even_columns_pads.append(pads)
                 if i == self.size:
