@@ -71,7 +71,7 @@ The image below shows examples of how kernels of different size and stride visit
 
 ![kerne size+stride](figures/kernel_size+stride.png "Examples of different kernels of different size and strides.")
 
-**Please note**: Operations are only performed where the center point of a kernel is located within the input tensor. This could result in output columns of different length. In such cases the output will be sliced according to the shortest column. An example is the convolution with stride 3 in the center of the figure above. The red gridlines depict convolutions that are disrecaded in the output.
+**Please note**: Operations are only performed where the center point of a kernel is located within the input tensor. This could result in output columns of different length. In such cases the output will be sliced according to the shortest column. An example is the convolution with stride 3 in the center of the figure above. The red gridlines depict convolutions that are omitted in the output.
 
 
 
@@ -84,7 +84,7 @@ Such a conversion is however not trivial, as the two lattices show different sym
 One way to get information from a hexagonal to a square grid is by resampling the data e.g. via interpolation or rebinning to a square grid. To limit the loss of information (especially spatial information), the resolution has to be increased, which inflates the size of the data and increases the required computing resources.
 
 Another way is to rearrange the data points to a square grid and adapt the square-grid operations applied on this data to conserve the symmetry of the hexagonal lattice. 
-Following this approach, HexagDLy is based on the construction of custom kernels consisting of square sub-kernels.
+Following this approach, HexagDLy is based on the construction of custom kernels consisting of square-grid sub-kernels.
 Combining the output of these sub-convolutions is then equivalent to performing hexagonal convolutions.
 
 In the first step, the hexagonal data has to be rearranged (*squeezed*) to a square grid as shown in [Preparing the Data](#preparing-the-data). Regular square convolution and pooling operations can be performed on the resulting array.
@@ -94,7 +94,7 @@ The application of a square NN kernel thus disregards the original pixel-to-pixe
 ![violating_symmetry](figures/violating_symmetry.png "Squeezing hexagonal data in a square grid and applying square convolution kernels disregards the symmetry of the hexagonal lattice. A valid hexagonal convolution can be performed by combining custom sub-kernels.")
 
 Due to the alternating shift between the columns of the squeezed array, the sub-kernels of a hexagonal convolution kernel have to shift accordingly, depending on whether the kernel is centered on an odd or an even column of the array. 
-A full NN hexagonal convolution with conserved dimensions can be broken down into a total of three sub-convolutions that are performed by applying two different sub-kernels on three differently padded versions of the input. The resulting arrays are then merged and added to obtain the desired result.
+A full NN hexagonal convolution with conserved dimensions can be broken down into a total of three sub-convolutions that are performed by applying two different sub-kernels to three differently padded versions of the input. The resulting arrays are then merged and added to obtain the desired result.
 The individual steps of such a hexagonal NN convolution are depicted in the image below, where a toy input tensor is convolved with a hexagonal NN kernel (all weights set to 1, i.e. the convolution adds up all data points covered by the kernel):
 
 ![explicit_next_neighbour_conv](figures/explicit_next_neighbour_conv.png "Schematic description of the individual sub-onvolutions  and combination of the individual outputs to perform a full hexagonal NN convolution as provided by HexagDLy.")
