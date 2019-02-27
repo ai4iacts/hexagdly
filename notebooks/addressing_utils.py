@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.colors as mcolors
 from matplotlib.patches import RegularPolygon
 from matplotlib.collections import PatchCollection
-import seaborn as sns
 
 class Detector:
     def __init__(self):
@@ -68,7 +67,6 @@ def plot(ax,x,y,grid=False,hexagons=False,lines=False):
         collection.set_array(np.array(colors))
         ax.add_collection(collection)
     ax.scatter(x, y, color='k')
-    cmap = sns.cubehelix_palette(len(x), rot=-1, gamma=1, dark=.1, light=.7, hue=1, as_cmap=True)
     c = mcolors.ColorConverter().to_rgb
     rvb = make_colormap([c('red'), c('violet'), 0.33, c('violet'), c('blue'), 0.66, c('blue')])
     ax.scatter(x, y, c=x, cmap=rvb)

@@ -12,19 +12,30 @@ HexagDLy provides convolution and pooling methods for hexagonally sampled data w
 
 ## Getting Started
 
+There are different ways to get HexagDLy up and running on your system as shown below. Basic examples for the application of HexagDLy are given as [notebooks](notebooks). Additionally unit tests are provided in [tests](tests).
+
+### Pip Installation
+
+The suggested way to install HexagDLy is to set up a clean virtual python environment (e.g. with conda, see [https://www.anaconda.com/](https://www.anaconda.com/)) and use the provided pip installer. To install basic functionalities only use:
+
+```
+pip install hexagdly
+```
+
+To get all necessary dependencies to run the provided [unit tests](tests) and [notebooks](notebooks), add the ```dev``` option:
+
+```
+pip install hexagdly[dev]
+```
+
+
+### Manual Installation
+
 HexagDLy requires a working installation of [PyTorch](https://github.com/pytorch/pytorch). Please visit the PyTorch website http://pytorch.org/ or github page https://github.com/pytorch/pytorch and follow the installation instructions.
 If you have downloaded HexagDLy, just add the directory `hexagdly/src` to your system's `$PYTHONPATH`, e.g. by adding the following line to your `.bashrc` or `.bash_profile` (or wherever your paths can be set)
 
 ```
 export PYTHONPATH='/path/to/hexagdly/src':$PYTHONPATH
-```
-
-Basic examples for the application of HexagDLy are given as [notebooks](notebooks). Additionally unit tests are provided in [tests](tests). To run the notebooks and tests, additional packages are required as listed in [hexagdly_conda_prereqs.txt](hexagdly_conda_prereqs.txt).
-
-To set up a new conda environment (see [https://www.anaconda.com/](https://www.anaconda.com/)) on a Linux system, in which all provided code should be working, execute
-
-```
-conda create --name hexagdly --file /path/to/hexagdly/hexagdly_conda_prereqs.txt
 ```
 
 ## How to use HexagDLy
