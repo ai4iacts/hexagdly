@@ -112,16 +112,21 @@ This project is licensed under the MIT license - please consult the [LICENSE](LI
 
 ## Citation
 
-If this work has helped your research, please cite us via:
+We have published an open access paper about HexagDLy in [SoftwareX](https://www.sciencedirect.com/science/article/pii/S2352711018302723). If this work has helped your research, please cite us via:
 
 ```
-@misc{hexagdly_code,
-    author       = {Tim Lukas Holch and Constantin Steppa},
-    title        = {HexagDLy - Hexagonal Convolutions with PyTorch},
-    month        = nov,
-    year         = 2018,
-    doi          = {10.5281/zenodo.1166130},
-    url          = {https://doi.org/10.5281/zenodo.1166130}
+@article{hexagdly_paper,
+    title = "HexagDLy—Processing hexagonally sampled data with CNNs in PyTorch",
+    author = "Constantin Steppa and Tim L. Holch",
+    journal = "SoftwareX",
+    volume = "9",
+    pages = "193 - 198",
+    year = "2019",
+    issn = "2352-7110",
+    doi = "https://doi.org/10.1016/j.softx.2019.02.010",
+    url = "https://www.sciencedirect.com/science/article/pii/S2352711018302723",
+    keywords = "Convolutional neural networks, Hexagonal grid, PyTorch, Astroparticle physics",
+    abstract = "HexagDLy is a Python-library extending the PyTorch deep learning framework with convolution and pooling operations on hexagonal grids. It aims to ease the access to convolutional neural networks for applications that rely on hexagonally sampled data as, for example, commonly found in ground-based astroparticle physics experiments."
 }
 ```
 
